@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music-player</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Remix icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+    />
+
+    <!-- font Awsome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awsome/6.7.2/css/all.min.css"
+    />
+
+    <!-- splide css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
+  </head>
+  <body>
+    <!-- Loader start -->
+    <div class="loader">
+      <img src="Images/loader.gif" alt="" srcset="" />
+    </div>
+
+    <!-- hero header section -->
+
+    <header class="artist">
+      <!-----------------------Aside------------------------------>
+      <aside>
+        <div class="logo">
+          <img src="Images/logo.png" alt="" />
+          <img src="Images/mini_logo.png" alt="" class="small_screen_logo" />
+        </div>
+        <div class="small_logo">
+          <img src="Images/mini_logo.png" alt="" />
+        </div>
+        <div class="music_menu">
+          <h2>Browse music</h2>
+          <ul class="artists_menu">
+            <li>
+              <a href="index.html">
+                <span class="icon icon-discover"></span>
+                <p>Discover</p>
+              </a>
+            </li>
+            <li>
+              <a href="artists.html" class="active_link">
+                <span class="icon icon-artists"></span>
+                <p>Artists</p>
+              </a>
+            </li>
+            <li>
+              <a href="albums.html" >
+                <span class="icon icon-albums"></span>
+                <p>Albums</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon icon-Stations"></span>
+                <p>Stations</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon icon-music"></span>
+                <p>Music</p>
+              </a>
+            </li>
+          </ul>
+
+          <h2>Your Music</h2>
+          <ul>
+            <li>
+              <a href="#">
+                <span class="icon icon-downloads"></span>
+                <p>Downloads</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon icon-purchased"></span>
+                <p>Purchased</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon icon-favourites"></span>
+                <p>Favourites</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon icon-history"></span>
+                <p>History</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <span class="sidebar_btn">
+          <i class="ri-arrow-left-s-line"> </i>
+        </span>
+      </aside>
+      <!-----------------------Aside------------------------------>
+
+      <!------------------------Main------------------------------>
+      <div class="hero_container">
+        <div class="hero_top">
+          <div class="hero_top_col">
+            <div class="search_box">
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="search for sing, Artists, playlists and more....."
+              />
+              <i class="ri-search-2-line"></i>
+            </div>
+            <span class="notification_icon"></span>
+          </div>
+          <div class="user_info">
+            <div class="user_img">
+              <img src="Images/proflile.jpg" alt="" />
+            </div>
+            <div class="user_login_wrapper">
+              <h2>Hello, David <i class="ri-arrow-down-s-fill"></i></h2>
+              <ul class="user_wrapper_dropdown">
+                <li>
+                  <a href="#">
+                    <span class="icon icon_profile"></span>
+                    <p>Profile</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="icon icon_logout"></span>
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="bars">
+              <i class="ri-menu-2-fill"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="artist_wrapper">
+          <div class="Headings">
+            <h2>Trending Artists</h2>
+            <div class="heading_lines">
+              <div class="heading_line"></div>
+              <div class="heading_line"></div>
+            </div>
+          </div>
+          <div class="artist_slider">
+            <div class="splide artistSplide">
+              <div class="splide__track">
+                <ul class="splide__list">
+                  <!-- card 1 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-1.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>One more Stranger</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 2 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-2.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 3 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-3.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>One more Stranger</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 4 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-4.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 5 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-5.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>One more Stranger</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 6 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-6.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 7 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-7.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="Headings">
+            <h2>Recommended Artists</h2>
+            <div class="heading_lines">
+              <div class="heading_line"></div>
+              <div class="heading_line"></div>
+            </div>
+          </div>
+          <div class="artist_slider">
+            <div class="splide recommendedSplide">
+              <div class="splide__track">
+                <ul class="splide__list">
+                  <!-- card 1 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-8.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>One more Stranger</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 2 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-9.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 3 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-10.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>One more Stranger</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 4 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-11.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 5 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-12.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>One more Stranger</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 6 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-13.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- card 7 -->
+                  <li class="splide__slide">
+                    <div class="artist_card_box">
+                      <div class="artist_card">
+                        <div class="artist_img">
+                          <img src="Images/artist-14.jpg" alt="" />
+                        </div>
+                        <div class="artist_info">
+                          <h2>Cloud Nine</h2>
+                          <p>Anna Ellison, Claire Hudson</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!------------------------Bottom---------------------------->
+      <div class="bottom_container">
+        <span class="bottom_container_btn">
+          <i class="ri-arrow-left-s-line"></i>
+        </span>
+        <div class="music_box">
+          <div class="music_box_img">
+            <img src="Images/song1.jpg" alt="" srcset="" />
+          </div>
+          <div class="music_box_text">
+            <h2>Don't Let me</h2>
+            <p>Mushroom Records</p>
+          </div>
+          <i class="ri-arrow-right-s-line"></i>
+        </div>
+        <div class="music_play_wrapper">
+          <div class="music_play_option">
+            <button class="music_option_prev">
+              <span class="icon play_option play_prev"></span>
+            </button>
+
+            <button class="play_button">
+              <span class="icon play_pause"></span>
+            </button>
+
+            <button class="music_option_next">
+              <span class="icon play_option play_next"></span>
+            </button>
+          </div>
+          <div class="music_play_box">
+            <div class="music_play_col">
+              <div class="music_play_line"></div>
+              <div class="music_timeline">
+                <p>00:00</p>
+                <p>04:27</p>
+              </div>
+            </div>
+            <div class="music_val_option">
+              <div class="music_volume">
+                <img src="Images/volume.svg" alt="" />
+              </div>
+              <button class="music_mode shuffle_mode">
+                <span class="shuffle_icon"></span>
+              </button>
+
+              <button class="music_mode repeat_mode">
+                <span class="repeat_icon"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="music_bottom_btn">
+          <button><i class="ri-arrow-up-s-line"></i> Queue</button>
+        </div>
+        <div class="queue_dropdown_box">
+          <div class="sidebar_btn queue_btn">
+            <i class="ri-arrow-left-s-line"></i>
+          </div>
+          <h1>QUEUE</h1>
+          <div class="queue_wrapper">
+            <!-- col 1 -->
+            <div class="queue_col">
+              <div class="queue_img">
+                <img src="Images/song1.jpg" alt="" />
+              </div>
+              <div class="queue_text">
+                <h2>Don't Let me</h2>
+                <p>by Mushroom Records</p>
+              </div>
+            </div>
+
+            <!-- col 2 -->
+            <div class="queue_col">
+              <div class="queue_img">
+                <img src="Images/song2.jpg" alt="" />
+              </div>
+              <div class="queue_text">
+                <h2>Don't Let me</h2>
+                <p>by Mushroom Records</p>
+              </div>
+            </div>
+
+            <!-- col 3-->
+            <div class="queue_col">
+              <div class="queue_img">
+                <img src="Images/song3.jpg" alt="" />
+              </div>
+              <div class="queue_text">
+                <h2>Don't Let me</h2>
+                <p>by Mushroom Records</p>
+              </div>
+            </div>
+
+            <!-- col 4-->
+            <div class="queue_col">
+              <div class="queue_img">
+                <img src="Images/song4.jpg" alt="" />
+              </div>
+              <div class="queue_text">
+                <h2>Don't Let me</h2>
+                <p>by Mushroom Records</p>
+              </div>
+            </div>
+
+            <!-- col 5-->
+            <div class="queue_col">
+              <div class="queue_img">
+                <img src="Images/song5.jpg" alt="" />
+              </div>
+              <div class="queue_text">
+                <h2>Don't Let me</h2>
+                <p>by Mushroom Records</p>
+              </div>
+            </div>
+
+            <!-- col 6-->
+            <div class="queue_col">
+              <div class="queue_img">
+                <img src="Images/song2.jpg" alt="" />
+              </div>
+              <div class="queue_text">
+                <h2>Don't Let me</h2>
+                <p>by Mushroom Records</p>
+              </div>
+            </div>
+          </div>
+          <div class="queue_btns">
+            <button>Save PlayList</button>
+            <a href="#">Clear</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+      var splide1 = new Splide(".artistSplide", {
+        perPage: 7,
+        perMove: 1,
+        type: "loop",
+        rewind: true,
+        pagination: false,
+        gap: "1rem",
+        arrows: false,
+        breakpoints: {
+          1400: {
+            perPage: 7,
+          },
+          1200: {
+            perPage: 5,
+          },
+          900: {
+            perPage: 4,
+          },
+          768: {
+            perPage: 4,
+          },
+          500: {
+            perPage: 2,
+          },
+          0: {
+            perPage: 2,
+          },
+        },
+      });
+      splide1.mount();
+
+      var splide2 = new Splide(".recommendedSplide", {
+        perPage: 7,
+        perMove: 1,
+        type: "loop",
+        rewind: true,
+        pagination: false,
+        gap: "1rem",
+        arrows: false,
+        breakpoints: {
+          1400: {
+            perPage: 7,
+          },
+          1200: {
+            perPage: 5,
+          },
+          900: {
+            perPage: 4,
+          },
+          768: {
+            perPage: 4,
+          },
+          500: {
+            perPage: 2,
+          },
+          0: {
+            perPage: 2,
+          },
+        },
+      });
+      splide2.mount();
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
