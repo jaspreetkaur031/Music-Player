@@ -851,7 +851,8 @@ aside{
     background-color: var(--white-color);
     position: relative;
 }
-.music_play_line:after{
+
+/* .music_play_line:after{
     content: '';
     position: absolute;
     top: 50%;
@@ -861,7 +862,50 @@ aside{
     height: 10px;
     border-radius: 100%;
     background-color: var(--theme-color);
+} */
+
+/* .music_play_line:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: var(--progress-percent, 4px); 
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+} */
+
+/* This creates the red "played" bar */
+.music_play_line:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--theme-color); /* Red fill color */
+  border-radius: 10px; /* Match the main bar's border-radius */
+  width: var(--progress-percent, 0%); /* Controlled by JS */
+  z-index: 1; /* Make sure it's above the white bar */
+  transition: width 0.1s linear; /* Smooth transition when seeking */
 }
+
+/* This styles the larger dot */
+.music_play_line:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: var(--progress-percent, 4px); /* Controlled by JS */
+  transform: translate(-50%, -50%);
+  width: 15px;  /* Increased size */
+  height: 15px; /* Increased size */
+  z-index: 2;   /* Ensures dot is above the red fill */
+  border-radius: 100%;
+  background-color: var(--theme-color); /* Red dot color */
+  transition: left 0.1s linear; /* Smooth transition when seeking */
+  cursor: pointer; /* Add a pointer cursor to indicate it's draggable */
+}
+
 .music_timeline{
     display: flex;
     justify-content: space-between;

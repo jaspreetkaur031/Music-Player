@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App - Premium Plans</title>
+    
+    <!-- Load Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load an icon library for feature checkmarks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/phosphor-icons/1.4.2/css/phosphor.min.css">
+ 
+    <link rel="stylesheet" href="purchase.css">
+
+</head>
+<body>
+
+    <!-- Wrapper with overflow-hidden to contain absolute elements -->
+    <div class="wrapper">
+    
+        <!-- Header/Navbar -->
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <!-- Logo (You can replace 'MusicApp' with your logo) -->
+                    <a href="#" class="logo">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z"/></svg>
+                       MIRACULOUS
+                    </a>
+                    
+                    <!-- Desktop Nav Links (Hidden on mobile) -->
+                    <div class="nav-links">
+                        <a href="index.html">Discover</a>
+                        <a href="artists.html">Artists</a>
+                        <a href="albums.html">Album</a>
+                        <a href="#">Contact Us</a>
+                        <button class="btn-secondary">Get Started</button>
+                    </div>
+                    
+                    <!-- Mobile Menu Button (Hamburger) -->
+                    <div class="mobile-menu-button">
+                        <button>
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- Section 1: Hero (Based on Screenshot 1040) -->
+            <section class="hero">
+                <!-- Background Glow -->
+                <div class="glow glow-1"></div>
+                <div class="glow glow-2"></div>
+                <!-- Floating Images (Placeholder) -->
+                <!-- You can replace these with your own images -->
+                <div class="floating-card floating-card-1">
+                    <!-- <img src="https://placehold.co/400x600/0B1120/E0E7FF?text=Your+Image+1" alt="Music event"> -->
+                     <img src="Images\musicpur3.jpg" alt="lets Started">
+                </div>
+                <div class="floating-card floating-card-2">
+                    <img src="Images\musicpur4.jpg" alt="Artist performing">
+                </div>
+                
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <!-- Content to change: Update this headline -->
+                        Premium.
+                        <br>
+                        <span class="gradient-text">Ad-Free.</span>
+                        <br>
+                        Unlimited.
+                    </h1>
+                    <p class="hero-subtitle">
+                        <!-- Content to change: Update this sub-headline -->
+                        Get the best listening experience. Upgrade to Premium and enjoy unlimited skips, offline listening, and more.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#pricing" class="btn-primary">
+                            See Premium Plans
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Features (Based on Screenshot 1037) -->
+            <section class="features-section">
+                <div class="container">
+                    <div class="features-grid">
+                        <!-- Content to change: Update this section headline and text -->
+                        <div class="features-content">
+                            <h2 class="section-title">
+                                Why Go Premium?
+                            </h2>
+                            <p class="section-subtitle">
+                                Whether you're working out, commuting, or just relaxing, Premium removes all the interruptions and unlocks our best features.
+                            </p>
+                        </div>
+                        
+                        <!-- Image Grid (Mimicking the layout) -->
+                        <div class="features-image-grid">
+                            <!-- You can replace these with feature images -->
+                            <!-- <div class="img-col-1 img-1 ">
+                                <img src="Images\musicpur1.jpeg" alt="Feature 1">
+                            </div> -->
+                            <div class="img-col-2">
+                                <div class="img-row-1">
+                                     <img src="Images\musicpur5.jpg" alt="Feature 2">
+                                </div>
+                                <div class="img-row-2">
+                                     <div>
+                                         <img src="Images\musicpur1.jpg" alt="Feature 3">
+                                     </div>
+                                     <div>
+                                         <img src="Images\musicpur2.jpg" alt="Feature 4">
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 3: Pricing (Replacing Screenshot 1038) -->
+            <section id="pricing" class="pricing-section">
+                <div class="container">
+                    <!-- Section Header -->
+                    <div class="pricing-header">
+                        <h2 class="section-title">
+                            <!-- Content to change: Update pricing headline -->
+                            Choose Your Plan
+                        </h2>
+                        <p class="section-subtitle">
+                            Listen without limits. Cancel anytime.
+                        </p>
+                    </div>
+
+                    <!-- Pricing Toggle -->
+                    <div class="pricing-toggle-container">
+                        <span id="monthlyLabel" class="active">Monthly</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="billingToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span id="annualLabel">Annual (Save 20%)</span>
+                    </div>
+
+                    <!-- Pricing Cards -->
+                    <!-- Content to change: Update plan details, prices, and features -->
+                    <div class="pricing-grid">
+                        
+                        <!-- Plan 1: Free -->
+                        <div class="content-card pricing-card">
+                            <h3>Free</h3>
+                            <p class="plan-description">Basic ad-supported listening</p>
+                            <div class="plan-price">
+                                $0<span> / month</span>
+                            </div>
+                            <ul class="features-list">
+                                <li><i class="ph-check"></i> Shuffle play</li>
+                                <li><i class="ph-check"></i> Access to all playlists</li>
+                            </ul>
+                            <button class="btn-secondary">Current Plan</button>
+                        </div>
+                        
+                        <!-- Plan 2: Premium (Most Popular) -->
+                        <div class="content-card pricing-card pricing-card-popular">
+                            <span class="popular-badge">MOST POPULAR</span>
+                            <h3>Premium</h3>
+                            <p class="plan-description">Ad-free, offline, and on-demand</p>
+                            
+                            <!-- Price -->
+                            <div id="price-monthly-premium" class="plan-price">
+                                $9.99<span> / month</span>
+                            </div>
+                            <div id="price-annual-premium" class="plan-price hidden">
+                                $99.99<span> / year</span>
+                            </div>
+
+                            <ul class="features-list">
+                                <li><i class="ph-check"></i> Everything in Free</li>
+                                <li><i class="ph-check"></i> Ad-free listening</li>
+                                <li><i class="ph-check"></i> Download songs for offline play</li>
+                                <li><i class="ph-check"></i> Unlimited skips</li>
+                                <li><i class="ph-check"></i> High-quality audio</li>
+                            </ul>
+                            <button class="btn-primary">Upgrade to Premium</button>
+                        </div>
+                        
+                        <!-- Plan 3: Family -->
+                        <div class="content-card pricing-card">
+                            <h3>Family</h3>
+                            <p class="plan-description">Premium for up to 6 accounts</p>
+
+                            <!-- Price -->
+                            <div id="price-monthly-family" class="plan-price">
+                                $15.99<span> / month</span>
+                            </div>
+                            <div id="price-annual-family" class="plan-price hidden">
+                                $159.99<span> / year</span>
+                            </div>
+
+                            <ul class="features-list">
+                                <li><i class="ph-check"></i> All Premium features</li>
+                                <li><i class="ph-check"></i> 6 separate Premium accounts</li>
+                                <li><i class="ph-check"></i> Family Mix playlist</li>
+                                <li><i class="ph-check"></i> Block explicit music</li>
+                            </ul>
+                            <button class="btn-secondary">Get Family Plan</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer (Based on Screenshot 1039) -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Logo / Brand -->
+                    <div class="footer-brand">
+                         <a href="#" class="logo">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z"/></svg>
+                            MIRACULOUS
+                        </a>
+                        <p>
+                            All your music, all in one place.
+                        </p>
+                    </div>
+                    
+                    <!-- Content to change: Update footer links -->
+                    
+                    <!-- Company Links -->
+                    <div class="footer-links">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Jobs</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Product Links -->
+                    <div class="footer-links">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="artists.html">Artists</a></li>
+                            <li><a href="albums.html">Albums</a></li>
+                            <li><a href="index.html">Discover</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Legal Links -->
+                    <div class="footer-links">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Copyright</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Bottom Bar -->
+                <div class="footer-bottom">
+                    <p>
+                        &copy; 2025 MusicApp. All rights reserved.
+                    </p>
+                    <!-- Social Icons -->
+                    <div class="social-icons">
+                        <a href="#"><i class="ph-facebook-logo"></i></a>
+                        <a href="#"><i class="ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph-twitter-logo"></i></a>
+                        <a href="#"><i class="ph-tiktok-logo"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    </div> <!-- end overflow-hidden wrapper -->
+
+    <!-- JavaScript for Pricing Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('billingToggle');
+            const monthlyLabel = document.getElementById('monthlyLabel');
+            const annualLabel = document.getElementById('annualLabel');
+            
+            // Get all the price elements
+            const monthlyPrices = [
+                document.getElementById('price-monthly-premium'),
+                document.getElementById('price-monthly-family')
+            ];
+            const annualPrices = [
+                document.getElementById('price-annual-premium'),
+                document.getElementById('price-annual-family')
+            ];
+
+            // Add event listener to the toggle
+            toggle.addEventListener('change', function() {
+                if (this.checked) {
+                    // Annual is selected
+                    monthlyPrices.forEach(el => el.classList.add('hidden'));
+                    annualPrices.forEach(el => el.classList.remove('hidden'));
+                    monthlyLabel.classList.remove('active');
+                    annualLabel.classList.add('active');
+                } else {
+                    // Monthly is selected
+                    monthlyPrices.forEach(el => el.classList.remove('hidden'));
+                    annualPrices.forEach(el => el.classList.add('hidden'));
+                    monthlyLabel.classList.add('active');
+                    annualLabel.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
