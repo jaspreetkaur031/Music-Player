@@ -1,0 +1,538 @@
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Inter', sans-serif;
+			background-color: #0c0a18; 	
+			color: #e5e7eb; /* text-gray-200 */
+			overflow-x: hidden;
+			--indigo-600: #4f46e5;
+			--indigo-700: #4338ca;
+			--indigo-400: #818cf8;
+			--indigo-300: #a5b4fc;
+			--pink-400: #f472b6;
+			--pink-600: #db2777;
+			--pink-700: #be185d;
+			--cyan-400: #22d3ee;
+			--cyan-600: #0891b2;
+			--cyan-700: #0e7490;
+			--gray-200: #e5e7eb;
+			--gray-300: #d1d5db;
+			--gray-400: #9ca3af;
+			--gray-500: #6b7280;
+			--gray-700: #374151;
+			--gray-800: #1f2937;
+			--gray-900: #111827;
+			--white: #ffffff;
+			--black: #000000;
+			--transparent: transparent;
+			--red-500: #ef4444;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		button {
+			font-family: inherit;
+			border: none;
+			cursor: pointer;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+		}
+		
+		/* --- 1. Animated Mesh Gradient Background --- */
+		@keyframes animated-gradient {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+		.aurora-bg {
+			background: linear-gradient(
+				-45deg, 	
+				#0c0a18, 	
+				#2c1a4d, 	
+				#0c0a18, 	
+				#1e293b,
+				#0c0a18
+			);
+			background-size: 400% 400%;
+			animation: animated-gradient 25s ease-in-out infinite;
+		}
+
+		/* --- Custom scrollbar --- */
+		::-webkit-scrollbar { width: 8px; height: 8px; }
+		::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+		::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+		::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+		
+		/* --- 2. Fade-in-up animation --- */
+		@keyframes fadeInUp {
+			from { opacity: 0; transform: translateY(20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.animate-fadeInUp {
+			animation: fadeInUp 0.7s ease-out forwards;
+			opacity: 0;
+		}
+		.delay-100ms { animation-delay: 0.1s; }
+		.delay-200ms { animation-delay: 0.2s; }
+		.delay-300ms { animation-delay: 0.3s; }
+		.delay-400ms { animation-delay: 0.4s; }
+		.delay-500ms { animation-delay: 0.5s; }
+
+		/* --- 3. Glassmorphism Card Style (MODIFIED for Glossy Look) --- */
+		.glass-card {
+			background: linear-gradient(to bottom, rgba(45, 56, 79, 0.6), rgba(30, 41, 59, 0.5)); /* New gradient */
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.07), 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* New inset highlight */
+		}
+		
+		/* --- 4. Glowing Gradient Border --- */
+		.glowing-border {
+			position: relative;
+			overflow: hidden;
+			border-radius: 0.75rem; /* rounded-xl */
+		}
+		.glowing-border::before {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+			border-radius: inherit;
+			padding: 2px; /* Border thickness */
+			background: linear-gradient(130deg, #4f46e5, #d946ef);
+			-webkit-mask: 	
+				linear-gradient(#fff 0 0) content-box, 	
+				linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			opacity: 0;
+			transition: opacity 0.4s ease;
+			z-index: 1;
+		}
+		.glowing-border:hover::before {
+			opacity: 1;
+		}
+
+		/* --- Layout & Component Styles --- */
+
+		/* Container */
+		.container {
+			width: 100%;
+			max-width: 1280px; /* max-w-7xl */
+			margin-left: auto;
+			margin-right: auto;
+			padding: 1.5rem; /* p-6 */
+		}
+		
+		/* Header */
+		.main-header {
+			position: relative;
+			z-index: 10;
+		}
+		.main-nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.main-nav .logo {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem; /* gap-2 */
+			font-size: 1.5rem; /* text-2xl */
+			line-height: 2rem;
+			font-weight: 700; /* font-bold */
+		}
+		.main-nav .logo svg {
+			width: 2rem; /* w-8 */
+			height: 2rem; /* h-8 */
+			color: var(--indigo-400);
+		}
+		.main-nav .nav-links {
+			display: none; /* hidden */
+		}
+		@media (min-width: 768px) { /* md: */
+			.main-nav .nav-links {
+				display: flex; /* md:flex */
+				align-items: center;
+				gap: 1.5rem; /* gap-6 */
+				font-size: 0.875rem; /* text-sm */
+				line-height: 1.25rem;
+				font-weight: 500; /* font-medium */
+				color: var(--gray-400);
+			}
+			.main-nav .nav-links a:hover {
+				color: var(--white);
+				transition: color 0.2s;
+			}
+		}
+		.main-nav .nav-button {
+			background-color: var(--indigo-600);
+			color: var(--white);
+			font-weight: 600; /* font-semibold */
+			padding: 0.5rem 1.25rem; /* py-2 px-5 */
+			border-radius: 0.5rem; /* rounded-lg */
+			font-size: 0.875rem; /* text-sm */
+			line-height: 1.25rem;
+			transition: all 0.2s;
+		}
+		.main-nav .nav-button:hover {
+			background-color: var(--indigo-700);
+		}
+
+		/* Main Content */
+		/* .main-content {
+			/* container styles already applied */
+		/* }  */
+		
+		/* Section */
+		.section {
+			margin-top: 6rem; /* my-24 */
+			margin-bottom: 6rem;
+		}
+
+		.section-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2.5rem; /* mb-10 */
+		}
+		.section-header h2 {
+			font-size: 2.25rem; /* text-4xl */
+			line-height: 2.5rem;
+			font-weight: 700; /* font-bold */
+		}
+		.section-header a {
+			font-size: 0.875rem; /* text-sm */
+			line-height: 1.25rem;
+			font-weight: 500; /* font-medium */
+			color: var(--indigo-400);
+		}
+		.section-header a:hover {
+			color: var(--indigo-300);
+		}
+
+		/* --- NFT Hero Section Styles (based on screenshot) --- */
+		.nft-hero-section {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding-top: 4rem; /* Add padding to the top */
+			padding-bottom: 6rem; /* Space before contact form */
+			overflow: hidden;
+			margin-top: 0; /* No top margin for hero */
+		}
+
+		.nft-hero-title {
+			font-size: 3rem; /* text-5xl */
+			font-weight: 800; /* font-extrabold */
+			color: var(--white);
+			text-align: center;
+			letter-spacing: -0.025em;
+		}
+		
+		@media (min-width: 768px) {
+			.nft-hero-title {
+				font-size: 4.5rem; /* md:text-7xl */
+			}
+		}
+
+		.nft-hero-subtitle {
+			font-size: 1.125rem; /* text-lg */
+			color: var(--gray-300);
+			max-width: 640px; /* max-w-xl */
+			text-align: center;
+			margin-top: 1rem;
+			margin-bottom: 4rem;
+		}
+
+		/* --- REMOVED OLD NFT CARD STYLES (.nft-card-deck, .img-card, :nth-child rules) --- */
+
+
+		/* --- NEW: 3D Rotation Styles --- */
+		#circle-container {
+			perspective: 1500px; /* Less dramatic depth */
+			height: 350px; 
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 4rem; 
+		}
+
+		#circle-rotator {
+			position: relative;
+			width:150px; /* Width for the central axis */
+			height: 240px; /* Height for the central axis */
+			transform-style: preserve-3d;
+			animation: spin 40s infinite linear; /* Slower rotation */
+		}
+
+		@keyframes spin {
+			from { transform: rotateY(0deg); }
+			to { transform: rotateY(360deg); }
+		}
+
+		.nft-card-3d {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 180px; /* Card size */
+			height: 280px; /* Card size */
+			border-radius: 0.75rem; /* Use the homepage's rounding */
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+			transition: transform 0.5s ease, box-shadow 0.3s;
+			
+			/* Inherit look and feel from existing homepage styles */
+			background: linear-gradient(to bottom, rgba(45, 56, 79, 0.6), rgba(30, 41, 59, 0.5)); 
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		
+		/* Pause the rotation on hover */
+		#circle-rotator:hover {
+			animation-play-state: paused;
+		}
+		
+		/* Hover effect for the card itself */
+		.nft-card-3d:hover {
+			transform: scale(1.1) translateZ(100px) !important; /* Override JS positioning temporarily */
+			box-shadow: 0 0 40px 10px var(--indigo-400);
+		}
+
+		/* Image inside the card should cover the area */
+		.nft-card-3d img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			/* Override max-width: 100% which causes issues with absolute children */
+			max-width: none; 
+		}
+		/* --- END: 3D Rotation Styles --- */
+		
+
+		
+	****************************************************************
+
+	
+        
+        .full-screen-card {
+          box-shadow: 20px 20px white;
+        }
+
+		.background-image-layer{
+			/* border: 5px solid yellow; */
+			 background-image: url('Images/index1Cover.jpg');
+			 height: 30rem;
+			 border-radius: 20px;
+            transition: transform 0.3s ease;
+			
+		}
+
+		.background-image-layer:hover{
+			 transform: scale(1.05);
+			 box-shadow: 2px 2px 15px white;
+			 border-radius: 40px;
+		}
+       
+
+        /* 3. Content Styling */
+        .card-content {
+			margin-top: 8rem;
+			margin-left: 4rem;
+            position: relative; /* Ensure content is above the overlay */
+            z-index: 10; /* Give it a higher z-index than the background and overlay */
+            text-align: center;
+            padding: 2rem;
+			/* height: 500px; */
+			/* width: 100%; */
+            max-width: 90%;
+			  /* --- 🚨 CHANGE THIS URL to your image link 🚨 --- */
+            /* background-image: url('Images/index1Cover.jpg'); */
+        }
+
+        .card-content h1 {
+            font-size: 3rem; /* 48px */
+            font-weight: 800; /* Extra bold */
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            transition: transform 0.3s ease;
+        }
+
+        .card-content p {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* Hover effect specifically for the title */
+        .full-screen-card:hover .card-content h1 {
+             transform: scale(1.05);
+        }
+
+        /* Mobile Responsiveness */
+        @media (min-width: 768px) {
+            .card-content h1 {
+                font-size: 5rem; /* 80px for desktop */
+            }
+        }
+
+
+
+
+	***********************************************************************
+
+
+
+
+		/* --- NEW: Artist Grid Styles --- */
+		.artist-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr); /* grid-cols-2 */
+			gap: 1.5rem; /* gap-6 */
+		}
+		@media (min-width: 768px) { /* md: */
+			.artist-grid { grid-template-columns: repeat(4, 1fr); } /* md:grid-cols-4 */
+		}
+		@media (min-width: 1024px) { /* lg: */
+			.artist-grid { grid-template-columns: repeat(6, 1fr); } /* lg:grid-cols-6 */
+		}
+		
+		.artist-card {
+			/* This is the .glass-card .glowing-border .tilt-card */
+			padding: 1.5rem; /* p-6 */
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			transition: all 0.3s;
+		}
+		.artist-card:hover {
+			transform: scale(1.05);
+		}
+		.artist-card img {
+			width: 8rem; /* w-32 */
+			height: 8rem; /* h-32 */
+			border-radius: 9999px; /* rounded-full */
+			object-fit: cover;
+			margin-bottom: 1rem; /* mb-4 */
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+		}
+		.artist-card h4 {
+			font-weight: 600; /* font-semibold */
+			color: var(--white);
+		}
+		.artist-card p {
+			font-size: 0.875rem; /* text-sm */
+			line-height: 1.25rem;
+			color: var(--gray-400);
+		}
+
+		/* --- NEW: Album Grid Styles --- */
+		.album-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr); /* grid-cols-2 */
+			gap: 1.5rem; /* gap-6 */
+		}
+		@media (min-width: 640px) { /* sm: */
+			.album-grid { grid-template-columns: repeat(3, 1fr); } /* sm:grid-cols-3 */
+		}
+		@media (min-width: 1024px) { /* lg: */
+			.album-grid { grid-template-columns: repeat(4, 1fr); } /* lg:grid-cols-4 */
+		}
+
+		.album-card {
+			/* This is the .glass-card .glowing-border .tilt-card */
+			transition: all 0.3s;
+			border-radius: 0.75rem; /* rounded-xl */
+		}
+		.album-card:hover {
+			transform: scale(1.05);
+		}
+		.album-card img {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1 / 1; /* Make image square */
+			border-radius: 0.5rem; /* rounded-lg */
+			object-fit: cover;
+			margin-bottom: 1rem; /* mb-4 */
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+		}
+		.album-card .album-info {
+			padding: 0 0.5rem 1.5rem 0.5rem; /* px-2 pb-6 pt-0 */
+		}
+		.album-card h4 {
+			font-weight: 600; /* font-semibold */
+			color: var(--white);
+			margin-bottom: 0.25rem; /* mb-1 */
+		}
+		.album-card p {
+			font-size: 0.875rem; /* text-sm */
+			line-height: 1.25rem;
+			color: var(--gray-400);
+		}
+
+
+		/* Footer */
+		.main-footer {
+			width: 100%;
+			max-width: 1280px; /* max-w-7xl */
+			margin-left: auto;
+			margin-right: auto;
+			padding: 1.5rem; /* p-6 */
+			margin-top: 4rem; /* mt-16 */
+			border-top: 1px solid rgba(55, 65, 81, 0.5); /* border-t border-gray-700/50 */
+		}
+		.footer-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+		@media (min-width: 768px) { /* md: */
+			.footer-content {
+				flex-direction: row;
+				justify-content: space-between;
+				text-align: left;
+			}
+		}
+		.footer-content p {
+			color: var(--gray-400);
+			font-size: 0.875rem; /* text-sm */
+			line-height: 1.25rem;
+			margin-bottom: 1rem; /* mb-4 */
+		}
+		@media (min-width: 768px) { /* md: */
+			.footer-content p { margin-bottom: 0; }
+		}
+		.footer-content .social-links {
+			display: flex;
+			gap: 1.5rem; /* gap-6 */
+		}
+		.footer-content .social-links a {
+			color: var(--gray-400);
+			transition: color 0.2s;
+		}
+		.footer-content .social-links a:hover {
+			color: var(--white);
+		}
+		.footer-content .social-links a svg {
+			width: 1.25rem; /* w-5 */
+			height: 1.25rem; /* h-5 */
+			fill: currentColor;
+		}

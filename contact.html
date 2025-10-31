@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Miraculous Music</title>
+  <!-- Load Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- 
+    START: Embedded CSS
+    - Includes shared styles from homepage and new styles for the contact form
+  -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0c0a18;  
+      color: #e5e7eb; /* text-gray-200 */
+      overflow-x: hidden;
+      --indigo-600: #4f46e5;
+      --indigo-700: #4338ca;
+      --indigo-400: #818cf8;
+      --indigo-300: #a5b4fc;
+      --pink-400: #f472b6;
+      --pink-600: #db2777;
+      --pink-700: #be185d;
+      --cyan-400: #22d3ee;
+      --cyan-600: #0891b2;
+      --cyan-700: #0e7490;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --black: #000000;
+      --transparent: transparent;
+      --red-500: #ef4444;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* --- 1. Animated Mesh Gradient Background --- */
+    @keyframes animated-gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .aurora-bg {
+      background: linear-gradient(
+        -45deg,  
+        #0c0a18,  
+        #2c1a4d,  
+        #0c0a18,  
+        #1e293b,
+        #0c0a18
+      );
+      background-size: 400% 400%;
+      animation: animated-gradient 25s ease-in-out infinite;
+    }
+
+    /* --- Custom scrollbar --- */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+    ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+    
+    /* --- 2. Fade-in-up animation --- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.7s ease-out forwards;
+      opacity: 0;
+    }
+    .delay-100ms { animation-delay: 0.1s; }
+    .delay-200ms { animation-delay: 0.2s; }
+    .delay-300ms { animation-delay: 0.3s; }
+    .delay-400ms { animation-delay: 0.4s; }
+    .delay-500ms { animation-delay: 0.5s; }
+
+    /* --- 3. Glassmorphism Card Style (MODIFIED for Glossy Look) --- */
+    .glass-card {
+      /* background: rgba(30, 41, 59, 0.5); */ /* Old */
+      background: linear-gradient(to bottom, rgba(45, 56, 79, 0.6), rgba(30, 41, 59, 0.5)); /* New gradient */
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); */ /* Old */
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.07), 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* New inset highlight */
+    }
+    
+    /* --- 4. Glowing Gradient Border --- */
+    .glowing-border {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem; /* rounded-xl */
+    }
+    .glowing-border::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: inherit;
+      padding: 2px; /* Border thickness */
+      background: linear-gradient(130deg, #4f46e5, #d946ef);
+      -webkit-mask:  
+        linear-gradient(#fff 0 0) content-box,  
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+    .glowing-border:hover::before,
+    .glowing-border:focus-within::before { /* Show glow when form is focused */
+      opacity: 1;
+    }
+
+    /* --- Layout & Component Styles --- */
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1280px; /* max-w-7xl */
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1.5rem; /* p-6 */
+    }
+    
+    /* Header */
+    .main-header {
+      position: relative;
+      z-index: 10;
+    }
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .main-nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* gap-2 */
+      font-size: 1.5rem; /* text-2xl */
+      line-height: 2rem;
+      font-weight: 700; /* font-bold */
+    }
+    .main-nav .logo svg {
+      width: 2rem; /* w-8 */
+      height: 2rem; /* h-8 */
+      color: var(--indigo-400);
+    }
+    .main-nav .nav-links {
+      display: none; /* hidden */
+    }
+    @media (min-width: 768px) { /* md: */
+      .main-nav .nav-links {
+        display: flex; /* md:flex */
+        align-items: center;
+        gap: 1.5rem; /* gap-6 */
+        font-size: 0.875rem; /* text-sm */
+        line-height: 1.25rem;
+        font-weight: 500; /* font-medium */
+        color: var(--gray-400);
+      }
+      .main-nav .nav-links a:hover {
+        color: var(--white);
+        transition: color 0.2s;
+      }
+    }
+    .main-nav .nav-button {
+      background-color: var(--indigo-600);
+      color: var(--white);
+      font-weight: 600; /* font-semibold */
+      padding: 0.5rem 1.25rem; /* py-2 px-5 */
+      border-radius: 0.5rem; /* rounded-lg */
+      font-size: 0.875rem; /* text-sm */
+      line-height: 1.25rem;
+      transition: all 0.2s;
+    }
+    .main-nav .nav-button:hover {
+      background-color: var(--indigo-700);
+    }
+
+    /* Main Content */
+    /* .main-content {
+      /* container styles already applied */
+    /* } */ 
+    
+    /* Section */
+    .section {
+      margin-top: 6rem; /* my-24 */
+      margin-bottom: 6rem;
+    }
+    .contact-section {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      max-width: 768px; /* max-w-3xl */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem; /* mb-6 */
+      text-align: center;
+    }
+    .section-header h2 {
+      font-size: 2.25rem; /* text-4xl */
+      line-height: 2.5rem;
+      font-weight: 700; /* font-bold */
+      width: 100%;
+    }
+    
+    /* --- REMOVED: Old Animated 3D Image Fan Styles --- */
+    /* (All styles from .hero-animation-container to the end of its media query are removed) */
+
+    /* --- NEW: NFT Hero Section Styles (based on screenshot) --- */
+    .nft-hero-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 4rem; /* Add padding to the top */
+      padding-bottom: 6rem; /* Space before contact form */
+      overflow: hidden;
+    }
+
+    .nft-hero-title {
+      font-size: 3rem; /* text-5xl */
+      font-weight: 800; /* font-extrabold */
+      color: var(--white);
+      text-align: center;
+      letter-spacing: -0.025em;
+    }
+    
+    @media (min-width: 768px) {
+      .nft-hero-title {
+        font-size: 4.5rem; /* md:text-7xl */
+      }
+    }
+
+    .nft-hero-subtitle {
+      font-size: 1.125rem; /* text-lg */
+      color: var(--gray-300);
+      max-width: 640px; /* max-w-xl */
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .nft-card-deck {
+      position: relative;
+      width: 300px;
+      height: 380px;
+      perspective: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .nft-card-deck .img-card {
+      position: absolute;
+      width: 300px;
+      height: 380px;
+      border-radius: 1rem; /* rounded-2xl */
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      background-color: var(--gray-800);
+      transform-style: preserve-3d;
+    }
+    
+    .nft-card-deck .img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- Positioning the new stacked cards --- */
+    .img-card:nth-child(1) { /* Far Left */
+      transform: translateX(-180px) rotateY(-30deg) scale(0.8);
+      z-index: 1;
+      opacity: 0.6;
+    }
+    .img-card:nth-child(2) { /* Left */
+      transform: translateX(-80px) rotateY(-20deg) scale(0.9);
+      z-index: 2;
+      opacity: 0.8;
+    }
+    .img-card:nth-child(3) { /* Center */
+      transform: translateX(0) rotateY(0) scale(1);
+      z-index: 3;
+      opacity: 1;
+    }
+    .img-card:nth-child(4) { /* Right */
+      transform: translateX(80px) rotateY(20deg) scale(0.9);
+      z-index: 2;
+      opacity: 0.8;
+    }
+    .img-card:nth-child(5) { /* Far Right */
+      transform: translateX(180px) rotateY(30deg) scale(0.8);
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    /* --- Hover Effect (Fan out) --- */
+    .nft-card-deck:hover .img-card:nth-child(1) { /* Far Left */
+      transform: translateX(-360px) rotateY(-35deg) scale(0.8);
+      opacity: 0.8;
+    }
+    .nft-card-deck:hover .img-card:nth-child(2) { /* Left */
+      transform: translateX(-190px) rotateY(-25deg) scale(0.9);
+      opacity: 1;
+    }
+    .nft-card-deck:hover .img-card:nth-child(3) { /* Center */
+      transform: scale(1.05);
+      box-shadow: 0 0 30px 5px var(--indigo-600);
+      border-color: var(--indigo-400);
+    }
+    .nft-card-deck:hover .img-card:nth-child(4) { /* Right */
+      transform: translateX(190px) rotateY(25deg) scale(0.9);
+      opacity: 1;
+    }
+    .nft-card-deck:hover .img-card:nth-child(5) { /* Far Right */
+      transform: translateX(360px) rotateY(35deg) scale(0.8);
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .nft-card-deck {
+        width: 220px;
+        height: 280px;
+      }
+      .nft-card-deck .img-card {
+        width: 220px;
+        height: 280px;
+      }
+
+      /* Adjust stacked cards for mobile */
+      .img-card:nth-child(1) { transform: translateX(-100px) rotateY(-30deg) scale(0.8); }
+      .img-card:nth-child(2) { transform: translateX(-50px) rotateY(-20deg) scale(0.9); }
+      .img-card:nth-child(3) { transform: translateX(0) rotateY(0) scale(1); }
+      .img-card:nth-child(4) { transform: translateX(50px) rotateY(20deg) scale(0.9); }
+      .img-card:nth-child(5) { transform: translateX(100px) rotateY(30deg) scale(0.8); }
+
+      /* Adjust hover for mobile */
+      .nft-card-deck:hover .img-card:nth-child(1) { transform: translateX(-150px) rotateY(-35deg) scale(0.8); }
+      .nft-card-deck:hover .img-card:nth-child(2) { transform: translateX(-75px) rotateY(-25deg) scale(0.9); }
+      .nft-card-deck:hover .img-card:nth-child(4) { transform: translateX(75px) rotateY(25deg) scale(0.9); }
+      .nft-card-deck:hover .img-card:nth-child(5) { transform: translateX(150px) rotateY(35deg) scale(0.8); }
+    }
+    
+    /* --- Contact Form Styles --- */
+    .contact-form-container {
+        padding: 2.5rem; /* p-10 */
+        border-radius: 0.75rem; /* rounded-xl */
+    }
+    
+    @media (max-width: 640px) { /* sm: */
+        .contact-form-container {
+            padding: 1.5rem; /* p-6 */
+        }
+    }
+
+    #contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; /* gap-6 */
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem; /* gap-6 */
+    }
+
+    @media (min-width: 768px) { /* md: */
+        .form-grid {
+            grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem; /* gap-2 */
+    }
+
+    .form-group label {
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 500; /* font-medium */
+        color: var(--gray-300);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        font-size: 1rem; /* text-base */
+        border-radius: 0.5rem; /* rounded-lg */
+        padding: 0.75rem 1rem; /* py-3 px-4 */
+        transition: all 0.2s ease;
+        -webkit-appearance: none;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--indigo-400);
+        box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3); /* focus ring */
+    }
+    
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1; /* Span full width in grid */
+    }
+    
+    .form-group .error-message {
+        color: var(--red-500);
+        font-size: 0.875rem;
+        display: none; /* Hidden by default */
+    }
+    
+    .form-group input.invalid,
+    .form-group textarea.invalid {
+        border-color: var(--red-500);
+    }
+    
+    .form-group input.invalid:focus,
+    .form-group textarea.invalid:focus {
+         box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3); /* red focus ring */
+    }
+
+    .form-group.invalid .error-message {
+        display: block; /* Show error message */
+    }
+
+    .submit-button {
+        background-color: var(--indigo-600);
+        color: var(--white);
+        font-weight: 600; /* font-semibold */
+        padding: 0.75rem 1.5rem; /* py-3 px-6 */
+        border-radius: 0.5rem; /* rounded-lg */
+        font-size: 1rem; /* text-base */
+        line-height: 1.5rem;
+        transition: all 0.2s;
+        width: 100%;
+    }
+    
+    @media (min-width: 768px) { /* md: */
+        .submit-button {
+            width: auto; /* Auto width on desktop */
+            align-self: flex-start;
+        }
+    }
+
+    .submit-button:hover {
+        background-color: var(--indigo-700);
+    }
+
+    /* --- REMOVED: Music Card Grid Styles --- */
+    /* (The old .music-card-grid styles are removed) */
+    
+    /* --- NEW: Success Message Modal (No alert()) --- */
+    #successMessage {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: var(--gray-800);
+        color: var(--white);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transform: translateX(calc(100% + 2rem)); /* Start off-screen */
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    #successMessage.show {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    #successMessage .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--indigo-400);
+    }
+    
+    #successMessage p {
+        font-weight: 500;
+    }
+
+    #successMessage .close-btn {
+        background: none;
+        color: var(--gray-400);
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0;
+        margin-left: 1rem;
+    }
+    #successMessage .close-btn:hover {
+        color: var(--white);
+    }
+    
+    
+    /* Footer */
+    .main-footer {
+      width: 100%;
+      max-width: 1280px; /* max-w-7xl */
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1.5rem; /* p-6 */
+      margin-top: 4rem; /* mt-16 */
+      border-top: 1px solid rgba(55, 65, 81, 0.5); /* border-t border-gray-700/50 */
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 768px) { /* md: */
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+    .footer-content p {
+      color: var(--gray-400);
+      font-size: 0.875rem; /* text-sm */
+      line-height: 1.25rem;
+      margin-bottom: 1rem; /* mb-4 */
+    }
+    @media (min-width: 768px) { /* md: */
+      .footer-content p { margin-bottom: 0; }
+    }
+    .footer-content .social-links {
+      display: flex;
+      gap: 1.5rem; /* gap-6 */
+    }
+    .footer-content .social-links a {
+      color: var(--gray-400);
+      transition: color 0.2s;
+    }
+    .footer-content .social-links a:hover {
+      color: var(--white);
+    }
+    .footer-content .social-links a svg {
+      width: 1.25rem; /* w-5 */
+      height: 1.25rem; /* h-5 */
+      fill: currentColor;
+    }
+  </style>
+  <!-- END: Embedded CSS -->
+</head>
+<body class="aurora-bg">
+
+  <!-- Header/Navbar -->
+  <header class="container main-header animate-fadeInUp">
+    <nav class="main-nav">
+      <a href="Home.html" class="logo"> <!-- Point logo back to index.html -->
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z"/></svg>
+        MIRACULOUS
+      </a>
+      <div class="nav-links animate-fadeInUp delay-100ms">
+        <!-- Update links to point to other pages -->
+        <a href="index.html">Discover</a>
+        <a href="artists.html">Artists</a>
+        <a href="albums.html">Albums</a>
+        <a href="music.html">Music</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="purchased.html">Premium</a>
+
+      </div>
+      <button class="nav-button animate-fadeInUp delay-200ms">
+        Get Started
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container main-content">
+
+    <!-- Section 1: NEW NFT Hero Section -->
+    <section class="section nft-hero-section animate-fadeInUp delay-200ms">
+      <h1 class="nft-hero-title">UNIQUE COLLECTION OF NFT ARTS</h1>
+      <p class="nft-hero-subtitle">The largest collection of nft arts among all marketplaces</p>
+      
+      <div class="nft-card-deck">
+        <div class="img-card">
+          <img src="Images/conimg.jpg" 
+               alt="NFT Art 1"
+               onerror="this.src='https://placehold.co/400x500/0ea5e9/white?text=Error'">
+        </div>
+        <div class="img-card">
+          <img src="Images/conimg2.jpg" 
+               alt="NFT Art 2"
+               onerror="this.src='https://placehold.co/400x500/db2777/white?text=Error'">
+        </div>
+        <div class="img-card">
+          <img src="Images/conimg4.jpg" 
+               alt="Central NFT Art"
+               onerror="this.src='https://placehold.co/400x500/c026d3/white?text=Error'">
+        </div>
+        <div class="img-card">
+          <img src="Images/conimg3.jpg" 
+               alt="NFT Art 3"
+               onerror="this.src='https://placehold.co/400x500/e11d48/white?text=Error'">
+        </div>
+        <div class="img-card">
+          <img src="Images/conimg5.jpg" 
+               alt="NFT Art 4"
+               onerror="this.src='https://placehold.co/400x500/16a34a/white?text=Error'">
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Contact Form (Moved down) -->
+    <section class="section contact-section animate-fadeInUp" style="animation-delay: 0.4s;">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+      </div>
+
+      <div class="contact-form-container glass-card glowing-border">
+        <form id="contactForm" novalidate>
+            <div class="form-grid">
+                <!-- Name -->
+                <div class="form-group" id="nameGroup">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message">Please enter your name.</span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group" id="emailGroup">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message">Please enter a valid email.</span>
+                </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group full-width" id="subjectGroup">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+                <span class="error-message">Please enter a subject.</span>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group full-width" id="messageGroup">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <span class="error-message">Please enter your message.</span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group full-width">
+                <button type="submit" class="submit-button">Send Message</button>
+            </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- REMOVED: Section 2: Animated Music Cards -->
+    
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer class="main-footer animate-fadeInUp" style="animation-delay: 0.4s;">
+    <div class="footer-content">
+      <p>&copy; 2025 Miraculous Music. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M22.4 5.6c-.8.3-1.7.6-2.6.7.9-.5 1.6-1.4 2-2.4-.9.5-1.8.9-2.8 1.1-.8-.9-2-1.4-3.3-1.4-2.5 0-4.5 2-4.5 4.5 0 .3 0 .7.1 1-3.8-.2-7.1-2-9.3-4.7-.4.7-.6 1.4-.6 2.2 0 1.6.8 3 2 3.8-.7 0-1.4-.2-2-.6 0 0 0 0 0 .1 0 2.2 1.6 4 3.6 4.4-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1.6 1.8 2.2 3.1 4.2 3.1-1.5 1.2-3.5 1.9-5.6 1.9-.4 0-.7 0-1.1-.1 2 1.3 4.4 2 7 2 8.4 0 13-7 13-13 0-.2 0-.4 0-.6.9-.6 1.7-1.4 2.3-2.4z"/></svg></a>
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.2c-2.7 0-3 .0-4.1.1-1.1.0-1.9.2-2.6.5-.7.3-1.3.7-1.9 1.3-.6.6-1 1.2-1.3 1.9-.3.7-.5 1.5-.5 2.6-.0 1.1-.1 1.4-.1 4.1s.0 3 .1 4.1c.0 1.1.2 1.9.5 2.6.3.7.7 1.3 1.3 1.9.6.6 1.2 1 1.9 1.3.7.3 1.5.5 2.6.5 1.1.0 1.4.1 4.1.1s3-.0 4.1-.1c1.1-.0 1.9-.2 2.6-.5.7-.3 1.3-.7 1.9-1.3.6-.6 1-1.2 1.3-1.9.3-.7.5-1.5.5-2.6.0-1.1.1-1.4.1-4.1s-.0-3-.1-4.1c-.0-1.1-.2-1.9-.5-2.6-.3-.7-.7-1.3-1.3-1.9-.6-.6-1.2-1-1.9-1.3-.7-.3-1.5-.5-2.6-.5-1.1-.0-1.4-.1-4.1-.1zM12 4.1c2.7 0 3 .0 4 .1.9.0 1.5.2 1.9.4.6.2.9.5 1.3.9s.7.7.9 1.3c.2.4.4 1 .4 1.9.1 1 .1 1.3.1 4s-.0 3-.1 4c-.0.9-.2 1.5-.4 1.9-.2.6-.5.9-.9 1.3s-.7.7-1.3.9c-.4.2-1 .4-1.9.4-1 .1-1.3.1-4 .1s-3-.0-4-.1c-.9-.0-1.5-.2-1.9-.4-.6-.2-.9-.5-1.3-.9s-.7-.7-.9-1.3c-.2-.4-.4-1-.4-1.9-.1-1-.1-1.3-.1-4s.0-3 .1-4c.0-.9.2-1.5.4-1.9.2-.6.5-.9.9-1.3s.7-.7 1.3-.9c.4-.2 1-.4 1.9-.4 1-.1 1.3-.1 4-.1zM12 9.1c-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9-1.3-2.9-2.9-2.9zM12 13c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zM16.9 8c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg></a>
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.02c-5.5 0-10 4.48-10 10s4.5 10 10 10 10-4.48 10-10-4.5-10-10-10zM12 20.1c-4.4 0-8-3.58-8-8s3.6-8 8-8 8 3.58 8 8-3.6 8-8 8zM10 15.6l5-3.1-5-3.1v6.2z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Message Toast/Modal -->
+  <div id="successMessage">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    </svg>
+    <p>Message sent successfully!</p>
+    <button class="close-btn" id="closeSuccessBtn" aria-label="Close message">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+
+
+  <!-- 
+    START: Embedded JS for Contact Form
+  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+      const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+      
+      // Inputs and Groups
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+      
+      const nameGroup = document.getElementById('nameGroup');
+      const emailGroup = document.getElementById('emailGroup');
+      const subjectGroup = document.getElementById('subjectGroup');
+      const messageGroup = document.getElementById('messageGroup');
+
+      let successMessageTimeout;
+
+      // Function to show a validation error
+      function showError(group, input) {
+        group.classList.add('invalid');
+        input.classList.add('invalid');
+      }
+
+      // Function to clear a validation error
+      function clearError(group, input) {
+        group.classList.remove('invalid');
+        input.classList.remove('invalid');
+      }
+
+      // Function to validate email format
+      function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      }
+      
+      // Function to show the success message
+      function showSuccessMessage() {
+        // Clear any existing timeout
+        if (successMessageTimeout) {
+            clearTimeout(successMessageTimeout);
+        }
+        
+        successMessage.classList.add('show');
+        
+        // Hide message after 5 seconds
+        successMessageTimeout = setTimeout(() => {
+            hideSuccessMessage();
+        }, 5000);
+      }
+      
+      // Function to hide the success message
+      function hideSuccessMessage() {
+         successMessage.classList.remove('show');
+         if (successMessageTimeout) {
+            clearTimeout(successMessageTimeout);
+         }
+      }
+
+      // --- Event Listeners ---
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault(); // Stop form from submitting the old way
+          let isValid = true;
+
+          // Clear all previous errors
+          clearError(nameGroup, nameInput);
+          clearError(emailGroup, emailInput);
+          clearError(subjectGroup, subjectInput);
+          clearError(messageGroup, messageInput);
+
+          // 1. Validate Name
+          if (nameInput.value.trim() === '') {
+            showError(nameGroup, nameInput);
+            isValid = false;
+          }
+
+          // 2. Validate Email
+          if (!validateEmail(emailInput.value)) {
+            showError(emailGroup, emailInput);
+            isValid = false;
+          }
+          
+          // 3. Validate Subject
+          if (subjectInput.value.trim() === '') {
+            showError(subjectGroup, subjectInput);
+            isValid = false;
+          }
+          
+          // 4. Validate Message
+          if (messageInput.value.trim() === '') {
+            showError(messageGroup, messageInput);
+            isValid = false;
+          }
+
+          // If all valid
+          if (isValid) {
+            console.log('Form is valid. Submitting...');
+            console.log('Name:', nameInput.value);
+            console.log('Email:', emailInput.value);
+            console.log('Subject:', subjectInput.value);
+            console.log('Message:', messageInput.value);
+            
+            // Show the success message
+            showSuccessMessage();
+            
+            // Clear the form
+            contactForm.reset();
+          } else {
+            console.log('Form is invalid.');
+          }
+        });
+      }
+      
+      // Close success message button
+      if (closeSuccessBtn) {
+          closeSuccessBtn.addEventListener('click', hideSuccessMessage);
+      }
+      
+      // Add real-time validation feedback (optional but nice)
+      nameInput.addEventListener('input', () => {
+          if (nameInput.value.trim() !== '') clearError(nameGroup, nameInput);
+      });
+      emailInput.addEventListener('input', () => {
+          if (validateEmail(emailInput.value)) clearError(emailGroup, emailInput);
+      });
+      subjectInput.addEventListener('input', () => {
+          if (subjectInput.value.trim() !== '') clearError(subjectGroup, subjectInput);
+      });
+      messageInput.addEventListener('input', () => {
+          if (messageInput.value.trim() !== '') clearError(messageGroup, messageInput);
+      });
+
+    });
+  </script>
+  <!-- END: Embedded JS -->
+</body>
+</html>
+
+
+

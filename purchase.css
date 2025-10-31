@@ -508,7 +508,7 @@
             flex-grow: 1; /* For flex-col layout */
         }
         .pricing-card-popular {
-            border: 2px solid #3B82F6; /* border-2 border-blue-500 */
+            /* border: 2px solid #3B82F6; border-2 border-blue-500 */
             box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); /* shadow-blue-500/30 */
         }
         .popular-badge {
@@ -563,6 +563,10 @@
         }
         .pricing-card button {
             width: 100%;
+        }
+
+        .pricing-card:hover {
+              border: 2px solid #3B82F6; /*border-2 border-blue-500*/
         }
 
         /* --- Footer --- */
